@@ -150,7 +150,7 @@ function buildConstants(
     result += `public static PathConstraints pathConstraints = new PathConstraints(${tValueConstraint}, ${velocityConstraint}, ${translationalConstraint}, ${headingConstraint}, ${timeoutConstraint}, ${zeroPowerAccelerationMultiplier}, ${BEZIER_CURVE_SEARCH_LIMIT}, ${decelerationStartMultiplier});\n\n`;
     result += "public static Follower createFollower(HardwareMap hardwareMap) {"
     result += "return new FollowerBuilder(followerConstants, hardwareMap)"
-    result += ".mecanumDrive(driveConstants)"
+    result += ".mecanumDrivetrain(driveConstants)"
     result += `.${localizer[1]}(localizerConstants)`
     result += `.pathConstraints(pathConstraints)`
     result += `.build();`
