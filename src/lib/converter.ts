@@ -155,5 +155,8 @@ function buildConstants(
     result += `.pathConstraints(pathConstraints)`
     result += `.build();`
     result += "}}"
+    result = result
+    .replace(/\.forwardY\(/g, ".forwardPodY(")
+    .replace(/\.strafeX\(/g, ".strafePodX(");
     return result;
 }
