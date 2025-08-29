@@ -47,7 +47,7 @@ function getConstants(
 
     return [...text.matchAll(pattern)]
         .map(([, key, raw]) => [key, raw.trim()])
-        .reduce((acc, [key, value]) => {
+        .reduce((acc: Record<string, string>, [key, value]) => {
             acc[key] = value;
             return acc;
         }, {});
@@ -60,7 +60,7 @@ function getPIDFCoefficients(
 
     return [...fConstants.matchAll(pattern)]
         .map(([, key, raw]) => [key, raw.trim()])
-        .reduce((acc, [key, value]) => {
+        .reduce((acc: Record<string, string>, [key, value]) => {
             acc[key] = value;
             return acc;
         }, {});

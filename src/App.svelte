@@ -18,12 +18,12 @@
     } catch (error) {
       if (error instanceof ConversionError) {
         alert(error.message)
-      } else throw error
+      } else throw error;
     }
   }
 </script>
 
-<div class="grid grid-cols-[1fr_auto_1fr] h-screen p-8 gap-8">
+<div class="grid grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] h-screen p-8 gap-8">
     <ConstantsInput bind:fConstants bind:lConstants/>
     <button onclick={convertConstants}
             class="btn btn-square size-20 my-auto btn-accent flex-col p-2">
