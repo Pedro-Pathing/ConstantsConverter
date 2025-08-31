@@ -21,7 +21,7 @@ export function buildConstants(
     // PID Coefficients:
     result += `.translationalPIDFCoefficients(new PIDFCoefficients(${pidCoefficients.translational.kP}, ${pidCoefficients.translational.kI}, ${pidCoefficients.translational.kD}, ${pidCoefficients.translational.kF}))`;
     result += `.headingPIDFCoefficients(new PIDFCoefficients(${pidCoefficients.heading.kP}, ${pidCoefficients.heading.kI}, ${pidCoefficients.heading.kD}, ${pidCoefficients.heading.kF}))`;
-    result += `.drivePIDFCoefficients(new PIDFCoefficients(${pidCoefficients.drive.kP}, ${pidCoefficients.drive.kI}, ${pidCoefficients.drive.kD}, ${pidCoefficients.drive.kT}, ${pidCoefficients.drive.kF}))`;
+    result += `.drivePIDFCoefficients(new FilteredPIDFCoefficients(${pidCoefficients.drive.kP}, ${pidCoefficients.drive.kI}, ${pidCoefficients.drive.kD}, ${pidCoefficients.drive.kT}, ${pidCoefficients.drive.kF}))`;
     if (pidCoefficients.secondaryTranslational) {
         result += `.secondaryTranslationalPIDFCoefficients(new PIDFCoefficients(${pidCoefficients.secondaryTranslational.kP}, ${pidCoefficients.secondaryTranslational.kI}, ${pidCoefficients.secondaryTranslational.kD}, ${pidCoefficients.secondaryTranslational.kF}))`;
     }
@@ -29,7 +29,7 @@ export function buildConstants(
         result += `.secondaryHeadingPIDFCoefficients(new PIDFCoefficients(${pidCoefficients.secondaryHeading.kP}, ${pidCoefficients.secondaryHeading.kI}, ${pidCoefficients.secondaryHeading.kD}, ${pidCoefficients.secondaryHeading.kF}))`;
     }
     if (pidCoefficients.secondaryDrive) {
-        result += `.secondaryDrivePIDFCoefficients(new PIDFCoefficients(${pidCoefficients.secondaryDrive.kP}, ${pidCoefficients.secondaryDrive.kI}, ${pidCoefficients.secondaryDrive.kD}, ${pidCoefficients.secondaryDrive.kT}, ${pidCoefficients.secondaryDrive.kF}))`;
+        result += `.secondaryDrivePIDFCoefficients(new FilteredPIDFCoefficients(${pidCoefficients.secondaryDrive.kP}, ${pidCoefficients.secondaryDrive.kI}, ${pidCoefficients.secondaryDrive.kD}, ${pidCoefficients.secondaryDrive.kT}, ${pidCoefficients.secondaryDrive.kF}))`;
     }
     result += ";\n\n";
 
