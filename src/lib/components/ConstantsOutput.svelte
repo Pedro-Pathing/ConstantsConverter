@@ -31,9 +31,9 @@
     })
 </script>
 
-<div class="tabs tabs-lift">
+<div class="tabs tabs-lift max-w-full max-h-full overflow-auto">
     <Tab group="constants-output" name="Constants.java" checked>
-        <pre class="overflow-auto max-h-full max-w-full"><code
-                class="bg-base-200 max-w-full">{@html highlightedCode}</code></pre>
+        <pre class="max-w-full max-h-full overflow-auto"><code
+                class="bg-base-200 max-w-full max-h-full overflow-auto">{@html highlightedCode}</code></pre>
     </Tab>
 </div>
