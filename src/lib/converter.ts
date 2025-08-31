@@ -114,6 +114,21 @@ const validMecanumConstants = [
     "useBrakeModeInTeleOp"
 ]
 
+const mecanumMappings = {
+    "xMovement": "xVelocity",
+    "yMovement": "yVelocity"
+}
+
+const includeLocalizerConstants = {
+    "yawScalar": true,
+    "customEncoderResolution": true
+}
+
+const toggleLocalizerUsage = {
+    "useYawScalar": "yawScalar",
+    "useCustomEncoderResolution": "customEncoderResolution"
+}
+
 function buildConstants(
     fConstants: Record<string, string>,
     pidfCoefficients: Record<string, string>,
@@ -131,12 +146,18 @@ function buildConstants(
     result += ";\n\n";
     result += "public static MecanumConstants driveConstants = new MecanumConstants()";
     for (const [name, value] of Object.entries(fConstants)) {
-        if (validMecanumConstants.includes(name)) result += `.${name}(${value})`
+        if (validMecanumConstants.includes(name)) {
+            const mappedName = mecanumMappings[name] ?? name
+            result += `.${mappedName}(${value})`
+        }
     }
     result += ";\n\n";
     result += `public static ${localizer[0]} localizerConstants = new ${localizer[0]}()`;
     for (const [name, value] of Object.entries(lConstants)) {
-        result += `.${name}(${value})`
+        if (toggleLocalizerUsage[name]) {
+            const prop = toggleLocalizerUsage[name]
+            includeLocalizerConstants[prop] = value === "true"
+        } else if (includeLocalizerConstants[name] ?? true) result += `.${name}(${value})`
     }
     result += ";\n\n";
     const tValueConstraint = fConstants["pathEndTValueConstraint"] ?? "0.995"
